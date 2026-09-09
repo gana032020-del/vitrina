@@ -1,0 +1,38 @@
+name: Trabajo
+description: Una pieza concreta para Vitrina / Nanub.
+title: "[trabajo] "
+labels: ["triage", "p2"]
+body:
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - bug
+        - mejora
+        - caja
+        - docs
+    validations:
+      required: true
+  - type: textarea
+    id: listo
+    attributes:
+      label: Listo cuando
+      description: Criterio observable. Una frase.
+      placeholder: El cliente puede pagar X desde la ficha Y.
+    validations:
+      required: true
+  - type: textarea
+    id: alcance
+    attributes:
+      label: Alcance
+      description: Qué entra y qué no.
+    validations:
+      required: true
+  - type: textarea
+    id: prueba
+    attributes:
+      label: Prueba
+      description: Cómo se verifica que quedó.
+    validations:
+      required: true

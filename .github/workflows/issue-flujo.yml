@@ -1,0 +1,94 @@
+name: Flujo de issues
+
+on:
+  issues:
+    types: [opened, reopened, labeled, closed]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  triage:
+    if: github.event.action == 'opened' || github.event.action == 'reopened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clasificar y asignar
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const text = `${issue.title || ''}\n${issue.body || ''}`.toLowerCase();
+            const labels = new Set(['triage']);
+            if (/bug|error|falla|roto|crash|500|no funciona/.test(text)) labels.add('bug');
+            if (/feat|mejora|enhancement|agregar|añadir|quiero/.test(text)) labels.add('enhancement');
+            if (/caja|cobro|pago|precio|factura|whatsapp|cotiz/.test(text)) labels.add('caja');
+            if (/\bp0\b|urgente|bloquea|down|producci[oó]n/.test(text)) labels.add('p0');
+            else if (/\bp1\b|importante|esta semana/.test(text)) labels.add('p1');
+            else labels.add('p2');
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: [...labels],
+            });
+            try {
+              await github.rest.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                assignees: [context.repo.owner],
+              });
+            } catch (e) {
+              core.warning(`No se pudo asignar: ${e.message}`);
+            }
+            const existing = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+            });
+            const already = existing.data.some(c => (c.body || '').includes('Triage automático'));
+            if (!already) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: [
+                  '## Triage automático',
+                  '',
+                  'Estado inicial: `triage`',
+                  `Dueño: @${context.repo.owner}`,
+                  '',
+                  'Próximo paso:',
+                  '1. Confirmar tipo: bug, mejora o caja',
+                  '2. Ajustar prioridad: `p0` / `p1` / `p2`',
+                  '3. Quitar `triage` y poner `ready` cuando se pueda ejecutar',
+                  '4. Cerrar con comentario de prueba cuando quede hecho',
+                  '',
+                  '_Flujo Nanub — Angel Nandi_',
+                ].join('\n'),
+              });
+            }
+
+  cerrado:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quitar triage al cerrar
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const names = (issue.labels || []).map(l => l.name);
+            for (const name of ['triage', 'ready', 'blocked']) {
+              if (names.includes(name)) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    name,
+                  });
+                } catch (e) {}
+              }
+            }

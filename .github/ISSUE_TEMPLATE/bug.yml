@@ -1,0 +1,32 @@
+name: Bug
+description: Algo roto en producción o en local.
+title: "[bug] "
+labels: ["bug", "triage", "p1"]
+body:
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Cómo se reproduce
+    validations:
+      required: true
+  - type: dropdown
+    id: bloquea
+    attributes:
+      label: ¿Bloquea caja?
+      options:
+        - "No"
+        - "Sí — p0"
+    validations:
+      required: true
