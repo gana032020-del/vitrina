@@ -10,6 +10,8 @@ Publicado a nombre de [Angel Nandi](https://github.com/gana032020-del).
 
 En México y LATAM el cobro real ya ocurre en WhatsApp y SPEI. Gumroad y similares se llevan un recorte. Vitrina es el mostrador; el dinero llega a tu cuenta.
 
+Este es el proyecto con el que se puede cobrar esta semana. SELLO, Cotiza y el POS de laboratorio siguen como productos y servicios dentro del catálogo.
+
 ## Catálogo publicado a tu nombre
 
 | Producto | Tipo | Precio |
@@ -40,6 +42,8 @@ Los cambios del estudio se guardan en ese dispositivo. Exporta un JSON de vez en
 - Pedido por WhatsApp, correo o transferencia
 - Recibo imprimible a tu nombre
 - Estudio: mesa de ingresos, catálogo, pedidos y marca
+
+Vitrina no deposita dinero sola. El ingreso sale cuando alguien pide y tú cobras.
 
 ## Créditos
 
