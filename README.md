@@ -14,7 +14,7 @@ Publicado a nombre de [Angel Nandi](https://github.com/gana032020-del).
 4. Comparte el enlace de la vitrina.
 5. Cuando entre el dinero, marca el pedido como **Pagado** y entrega el kit.
 
-Los kits digitales (cotización, WhatsApp, cobros, honorarios, POS lab) se desbloquean en el folio al marcar pagado. Exporta un JSON de vez en cuando como respaldo.
+Los kits digitales (cotización, WhatsApp, cobros, honorarios, POS lab) se desbloquean al marcar pagado. Exporta un JSON de vez en cuando como respaldo.
 
 Vitrina no deposita dinero sola. El ingreso sale cuando alguien pide y tú cobras.
 
