@@ -2,7 +2,7 @@
 
 **Tienda digital de Angel Nandi / Nanub.**
 
-Catálogo público, pedidos y recibo. El cobro va por WhatsApp, correo o transferencia — sin comisión de plataforma.
+Catálogo público, pedidos y folio. El cobro va por WhatsApp, correo o transferencia — sin comisión de plataforma.
 
 Publicado a nombre de [Angel Nandi](https://github.com/gana032020-del).
 
