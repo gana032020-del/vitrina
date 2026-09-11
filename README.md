@@ -2,7 +2,7 @@
 
 **Tienda digital de Angel Nandi / Nanub.**
 
-Catálogo público, pedidos y folio. El cobro va por WhatsApp, correo o transferencia — sin comisión de plataforma.
+Catálogo público, pedidos con folio y cobro por WhatsApp, correo o transferencia — sin comisión de plataforma.
 
 Publicado a nombre de [Angel Nandi](https://github.com/gana032020-del).
 
@@ -12,7 +12,7 @@ Publicado a nombre de [Angel Nandi](https://github.com/gana032020-del).
 2. Pon tu WhatsApp con lada (ej. `52155…`).
 3. Pon tu CLABE / banco o PayPal.
 4. Comparte el enlace de la vitrina.
-5. Cuando entre el dinero, marca el pedido como **Pagado** y entrega el kit.
+5. Cuando entre el dinero, marca el pedido como **Pagado** y entrega el kit (se copia listo para pegar al cliente).
 
 Los kits digitales (cotización, WhatsApp, cobros, honorarios, POS lab) se desbloquean al marcar pagado. Exporta un JSON de vez en cuando como respaldo.
 
